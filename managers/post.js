@@ -6,8 +6,14 @@ module.exports = {
     var id = arg.id;
     return postsData.filter(item => {return item.id == id })[0] || null;
   },
-  getPosts:function(){
-    return postsData;
+  getPosts: async function(){
+    //let postModel = mongoose.model('Post', postSchema);
+    try {
+      let allPosts = await postModel.find()
+      return allPosts
+    }catch(err){
+      return false
+    }
   },
   addPost: async function({title, img, nameUser, date, description, votes, category}) {
     let post = {
