@@ -9,7 +9,7 @@ type Query {
   posts: [Post]
 }
 type Mutation {
-  addPost (title: String!, img: Boolean, nameUser: String!, Date: String!, description: String!, votes: Int, category: String!):Post
+  addPost (title: String!, img: Boolean, nameUser: String!, date: String!, description: String!, votes: Int, category: String!):Post
 }
 type Post {
   id: String!

@@ -9,19 +9,16 @@ module.exports = {
   getPosts:function(){
     return postsData;
   },
-  addPost:function({title, description}) {
+  addPost:function({title, img, nameUser, date, description, votes, category}) {
     var id = faker.random.uuid();
     postsData.push({
-      id:id,
+      id: id,
       title: title,
       img: img,
       nameUser: nameUser,
       date: date,
       description: description,
-      votes: {
-        positiveVotes: positiveVotes,
-        negativeVotes: negativeVotes
-      },
+      votes: votes,
       category: category
     })
     

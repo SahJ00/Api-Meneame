@@ -3,7 +3,9 @@ const graphqlHTTP = require('express-graphql');
 const cors = require('cors');
 const schema = require("./schema");
 const {getPost, getPosts, addPost} = require("./managers/post");
-
+const mongoose = require('mongoose');
+let connString = "mongodb://127.0.0.1";
+const db = mongoose.connection;
 const app = express();
 
 /**
@@ -30,3 +32,12 @@ app.use('/graphql', cors(), graphqlHTTP({
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => console.log('Now browse to localhost:3000/graphql'));
+
+mongoose.connect(connString);
+db.on('error',function(){
+console.log("Error al conectarse a Mongo");
+});
+db.once('open', function() {
+console.log("Conectado a MongoDB");
+});
+
