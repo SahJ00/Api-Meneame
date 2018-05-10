@@ -2,9 +2,11 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const cors = require('cors');
 const schema = require("./schema");
+const secure = require('express-force-https');
 const {getPost, getPosts, addPost, deletePost} = require("./managers/post");
 
 const app = express();
+app.use(secure)
 
 /**
  * Vinclulacion de Root Query y mutations con sus respectivas funciones JS

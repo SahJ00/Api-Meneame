@@ -1,5 +1,4 @@
-let postsData = require("../fakeData");
-const faker = require('faker');
+
 const {postModel} = require("../db/models/posts")
 module.exports = {
   getPost:function(arg){
