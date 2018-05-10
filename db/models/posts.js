@@ -1,6 +1,7 @@
 const {
   mongoose
 } = require("../index")
+const ObjectId = mongoose.Types.ObjectId;
 
 const postSchema = mongoose.Schema({
   title: {

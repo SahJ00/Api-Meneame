@@ -9,7 +9,7 @@ module.exports = {
   getPosts:function(){
     return postsData;
   },
-  addPost:function({title, img, nameUser, date, description, votes, category}) {
+  addPost: async function({title, img, nameUser, date, description, votes, category}) {
     let post = {
       title: title,
       img: img,
@@ -19,22 +19,21 @@ module.exports = {
       votes: votes,
       category: category
     }
-    let postDB = new postModel(post).save().then(function(res){
-      return (res)
-    }).catch(function(){
-      return null
-    })
-    
-   
+    try {
+      let myPostModel = new postModel(post)
+      var result = await myPostModel.save()
+      return result
+    }catch(err) {
+      return false
+    }
   },
-  deletePost:function(id) {
-    var id = {_id : id};
-    postModel.findByIdAndRemove(id, function(err, result) {
-      if (err) throw err;
-      if(result){
-      console.log("Documento eliminado.");
-      }
-      });
-    return true;
+  deletePost: async function(id) {
+    try{
+      var result = await postModel.findByIdAndRemove(id)
+      return true
+    }catch(err){
+      return false
+    }
+  
   }
 }
