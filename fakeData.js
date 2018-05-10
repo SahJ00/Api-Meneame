@@ -10,7 +10,7 @@ function generateFake(length){
     var item = {
       id: faker.random.uuid(),
       title: faker.lorem.sentence(),
-      img: faker.image.image(),
+      img: faker.image.imageUrl(),
       nameUser: faker.internet.userName(),
       date: faker.date.recent(),
       description: faker.lorem.paragraph(),
